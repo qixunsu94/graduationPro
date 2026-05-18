@@ -1,0 +1,5 @@
+geekyan:
+  ai:
+    api-key: ${AI_API_KEY:your-api-key-here}
+    api-url: ${AI_API_URL:https://open.bigmodel.cn/api/paas/v4/chat/completions}
+    model: ${AI_MODEL:glm-4-flash}

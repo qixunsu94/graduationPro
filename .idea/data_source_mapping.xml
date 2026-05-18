@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourcePerFileMappings">
+    <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/fe47ac97-d4ae-4f6f-95c4-467917ca277a/console.sql" value="fe47ac97-d4ae-4f6f-95c4-467917ca277a" />
+    <file url="file://$PROJECT_DIR$/RuoYi-Vue-master/sql/ry_20250417.sql" value="fe47ac97-d4ae-4f6f-95c4-467917ca277a" />
+  </component>
+</project>
