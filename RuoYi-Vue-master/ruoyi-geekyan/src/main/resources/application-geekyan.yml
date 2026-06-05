@@ -1,5 +1,28 @@
 geekyan:
   ai:
-    api-key: ${AI_API_KEY:your-api-key-here}
-    api-url: ${AI_API_URL:https://open.bigmodel.cn/api/paas/v4/chat/completions}
-    model: ${AI_MODEL:glm-4-flash}
+    api-key: 2e8b17aa90ba4dd5a0028948b660510d.GhIvKlPM2KVUdyJA
+    api-url: https://open.bigmodel.cn/api/paas/v4/chat/completions
+    model: glm-4.6
+  deepseek:
+    api-key: sk-1fb179ac6ed8493aa32c268bb4c130e2
+    api-url: https://api.deepseek.com/v1/chat/completions
+    model: deepseek-chat
+  baidu-translate:
+    appid: 20260521002617009
+    secret: TT3gVvljp7islQcCP8gb
+  dict:
+    service-url: http://127.0.0.1:5000
+
+mybatis-plus:
+  mapper-locations: classpath*:mapper/**/*Mapper.xml
+  type-aliases-package: com.geekyan.**.entity
+  global-config:
+    db-config:
+      table-prefix: ""
+      id-type: auto
+      logic-delete-field: delFlag
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl

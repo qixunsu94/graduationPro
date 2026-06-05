@@ -6,9 +6,12 @@ import com.geekyan.entity.ChatMessage;
 import com.geekyan.mapper.ChatMessageMapper;
 import com.geekyan.service.IChatMessageService;
 import com.geekyan.service.IAiService;
+import com.geekyan.service.QueryCacheService;
+import com.alibaba.fastjson2.JSON;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.*;
 
 @Service
@@ -16,6 +19,9 @@ public class ChatMessageServiceImpl extends ServiceImpl<ChatMessageMapper, ChatM
 
     @Autowired
     private IAiService aiService;
+
+    @Autowired
+    private QueryCacheService queryCacheService;
 
     @Override
     public Map<String, Object> sendMessage(Long userId, String sessionId, String message, String fileName) {
@@ -26,6 +32,8 @@ public class ChatMessageServiceImpl extends ServiceImpl<ChatMessageMapper, ChatM
         userMsg.setContent(message);
         userMsg.setRole("USER");
         userMsg.setFileName(fileName);
+        userMsg.setCreateTime(LocalDateTime.now());
+        userMsg.setUpdateTime(LocalDateTime.now());
         save(userMsg);
 
         String aiReply = aiService.chat("You are an English learning assistant.", message, sessionId);
@@ -37,6 +45,8 @@ public class ChatMessageServiceImpl extends ServiceImpl<ChatMessageMapper, ChatM
         aiMsg.setContent(aiReply);
         aiMsg.setRole("ASSISTANT");
         aiMsg.setSendMessageId(userMsg.getMessageId());
+        aiMsg.setCreateTime(LocalDateTime.now());
+        aiMsg.setUpdateTime(LocalDateTime.now());
         save(aiMsg);
 
         Map<String, Object> result = new HashMap<>();
@@ -48,14 +58,29 @@ public class ChatMessageServiceImpl extends ServiceImpl<ChatMessageMapper, ChatM
 
     @Override
     public Map<String, Object> translateMessage(String messageId) {
+        String cached = queryCacheService.getMsgTranslate(messageId);
+        if (cached != null && !cached.isEmpty()) {
+            try {
+                return new HashMap<>(JSON.parseObject(cached, Map.class));
+            } catch (Exception ignored) {
+            }
+        }
+
         ChatMessage msg = getOne(new LambdaQueryWrapper<ChatMessage>()
                 .eq(ChatMessage::getMessageId, messageId));
         Map<String, Object> result = new HashMap<>();
         if (msg != null) {
-            String translation = aiService.translate(msg.getContent(), "English", "Chinese");
-            msg.setTranslation(translation);
-            updateById(msg);
-            result.put("translation", translation);
+            if (msg.getTranslation() != null && !msg.getTranslation().isEmpty()) {
+                result.put("translation", msg.getTranslation());
+                result.put("cached", true);
+            } else {
+                String translation = aiService.translate(msg.getContent(), "English", "Chinese");
+                msg.setTranslation(translation);
+                updateById(msg);
+                result.put("translation", translation);
+                result.put("cached", false);
+            }
+            queryCacheService.setMsgTranslate(messageId, result);
         }
         return result;
     }

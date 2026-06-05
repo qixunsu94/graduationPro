@@ -13,6 +13,7 @@ public class WordBook {
     private Long wordId;
     private String word;
     private String bookName;
+    private Long bookId;
     private Integer masteryLevel;
     private Integer reviewCount;
     private LocalDateTime lastReviewTime;

@@ -18,6 +18,21 @@ public class UserSettings {
     private String speechRoleNameLabel;
     private String targetLanguage;
     private String aiProvider;
+
+    private Integer targetYear;
+    private String targetSchool;
+    private String targetMajor;
+    private Integer targetScore;
+    private String examSubjects;
+
+    private Integer autoAddWord;
+    private String defaultDict;
+    private Integer dailyWordGoal;
+    private Integer dailyQuestionGoal;
+    private String readingMode;
+    private Integer pushEnabled;
+    private String pushTime;
+
     @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;
     @TableField(fill = FieldFill.INSERT_UPDATE)

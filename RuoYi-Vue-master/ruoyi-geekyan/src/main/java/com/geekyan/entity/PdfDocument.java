@@ -13,6 +13,7 @@ public class PdfDocument {
     private String fileName;
     private String filePath;
     private Long fileSize;
+    private String fileType;
     private Integer pageCount;
     private String parsedContent;
     private Integer status;

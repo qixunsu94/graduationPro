@@ -13,11 +13,15 @@ public class ReviewTask {
     private String relatedType;
     private Long relatedId;
     private String content;
+    private String answerContent;
+    private String subject;
     private Integer reviewStage;
+    private Integer reviewCount;
     private LocalDateTime nextReviewTime;
     private LocalDateTime lastReviewTime;
     private Integer isCompleted;
     private Integer accuracyScore;
+    private Double masteryLevel;
     @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;
     @TableField(fill = FieldFill.INSERT_UPDATE)

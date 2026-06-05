@@ -1,0 +1,5 @@
+#NOTE: This is a Maven Resolver internal implementation file, its format can be changed without prior notice.
+#Sun May 31 13:52:55 CST 2026
+@default-public-https\://maven.aliyun.com/repository/public/.lastUpdated=1780206770221
+http\://maven.aliyun.com/nexus/content/groups/public/.lastUpdated=1780206775780
+https\://maven.aliyun.com/repository/public/.error=Could not transfer artifact org.ow2\:ow2\:pom\:1.5 from/to public (https\://maven.aliyun.com/repository/public)\: d\:\\graduation project\\graduationPro\\backstage\\RuoYi-Vue-master\\RuoYi-Vue-master\\local-repo\\org\\ow2\\ow2\\1.5\\ow2-1.5.pom.5609660346422641739.tmp\: \u53E6\u4E00\u4E2A\u7A0B\u5E8F\u6B63\u5728\u4F7F\u7528\u6B64\u6587\u4EF6\uFF0C\u8FDB\u7A0B\u65E0\u6CD5\u8BBF\u95EE\u3002

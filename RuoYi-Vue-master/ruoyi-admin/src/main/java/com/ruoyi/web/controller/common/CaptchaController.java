@@ -46,7 +46,7 @@ public class CaptchaController
     public AjaxResult getCode(HttpServletResponse response) throws IOException
     {
         AjaxResult ajax = AjaxResult.success();
-        boolean captchaEnabled = configService.selectCaptchaEnabled();
+        boolean captchaEnabled = true;
         ajax.put("captchaEnabled", captchaEnabled);
         if (!captchaEnabled)
         {

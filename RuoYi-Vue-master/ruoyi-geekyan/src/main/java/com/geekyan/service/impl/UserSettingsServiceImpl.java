@@ -7,8 +7,11 @@ import com.geekyan.mapper.UserSettingsMapper;
 import com.geekyan.service.IUserSettingsService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 @Service
-public class UserSettingsServiceImpl extends ServiceImpl<UserSettingsMapper, UserSettings> implements IUserSettingsService {
+public class UserSettingsServiceImpl extends ServiceImpl<UserSettingsMapper, UserSettings>
+        implements IUserSettingsService {
 
     @Override
     public UserSettings getOrCreateByUserId(Long userId) {
@@ -23,6 +26,8 @@ public class UserSettingsServiceImpl extends ServiceImpl<UserSettingsMapper, Use
             settings.setPlayingVoiceSpeed("1.0");
             settings.setTargetLanguage("英语");
             settings.setAiProvider("ZHIPU");
+            settings.setCreateTime(LocalDateTime.now());
+            settings.setUpdateTime(LocalDateTime.now());
             save(settings);
         }
         return settings;

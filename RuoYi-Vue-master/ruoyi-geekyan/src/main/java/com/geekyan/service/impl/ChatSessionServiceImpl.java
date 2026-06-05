@@ -24,10 +24,13 @@ public class ChatSessionServiceImpl extends ServiceImpl<ChatSessionMapper, ChatS
             session.setSessionId(UUID.randomUUID().toString().replace("-", ""));
             session.setUserId(userId);
             session.setName("日常对话");
-            session.setRole("英语老师");
+            session.setRole("通用AI助手");
             session.setTopic("日常对话");
             session.setSessionType("TOPIC");
+            session.setSubject("general");
             session.setMessageCount(0);
+            session.setCreateTime(LocalDateTime.now());
+            session.setUpdateTime(LocalDateTime.now());
             save(session);
         }
         return session;

@@ -11,14 +11,19 @@ public class ChatMessage {
     private Long id;
     private String messageId;
     private String sessionId;
+    private String groupId;
     private Long userId;
     private String content;
     private String role;
     private String fileName;
+    private String imageUrl;
     private String grammarAnalysis;
     private String translation;
+    private String sections;
+    private String hiddenJson;
     private Integer pronunciationScore;
     private String sendMessageId;
+    private String subject;
     @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;
     @TableField(fill = FieldFill.INSERT_UPDATE)

@@ -15,6 +15,9 @@ public class ChatSession {
     private String role;
     private String topic;
     private String sessionType;
+    private String subject;
+    private String groupId;
+    private Integer groupEnded;
     private Integer messageCount;
     private LocalDateTime lastMessageTime;
     @TableField(fill = FieldFill.INSERT)

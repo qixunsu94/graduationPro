@@ -11,6 +11,9 @@ public class LearningRecord {
     private Long id;
     private Long userId;
     private String recordType;
+    private String subject;
+    private String sourceType;
+    private String sourceId;
     private Integer duration;
     private String contentSummary;
     private Integer score;

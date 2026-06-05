@@ -12,9 +12,14 @@ public class LongSentence {
     private Long userId;
     private String sentence;
     private String translation;
+    private String literalTranslation;
+    private String freeTranslation;
     private String analysis;
     private String source;
+    private String sentenceType;
     private String difficulty;
+    private String grammarTags;
+    private String coreVocab;
     @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;
     @TableField(fill = FieldFill.INSERT_UPDATE)

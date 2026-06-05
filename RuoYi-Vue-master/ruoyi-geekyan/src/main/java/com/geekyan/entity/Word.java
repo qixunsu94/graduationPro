@@ -15,6 +15,12 @@ public class Word {
     private String examples;
     private Integer frequency;
     private String difficulty;
+    private String etymology;
+    private String synonyms;
+    private String antonyms;
+    private String wordForms;
+    private String examTags;
+    private String frequencyLevel;
     @TableField(fill = FieldFill.INSERT)
     private LocalDateTime createTime;
     @TableField(fill = FieldFill.INSERT_UPDATE)

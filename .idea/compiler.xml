@@ -8,12 +8,20 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ruoyi-framework" />
-        <module name="ruoyi-system" />
         <module name="ruoyi-common" />
         <module name="ruoyi-generator" />
+        <module name="ruoyi-system" />
         <module name="ruoyi-quartz" />
-        <module name="ruoyi-geekyan" />
         <module name="ruoyi-admin" />
+      </profile>
+      <profile name="Annotation profile for ruoyi" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$PROJECT_DIR$/../../../../Maven/apache-maven-3.9.11-bin/apache-maven-3.9.11/mvn_repo/org/projectlombok/lombok/1.18.38/lombok-1.18.38.jar" />
+        </processorPath>
+        <module name="ruoyi-geekyan" />
       </profile>
     </annotationProcessing>
   </component>

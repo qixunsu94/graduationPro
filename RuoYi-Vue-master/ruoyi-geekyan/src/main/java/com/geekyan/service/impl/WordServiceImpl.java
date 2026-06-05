@@ -14,13 +14,19 @@ public class WordServiceImpl extends ServiceImpl<WordMapper, Word> implements IW
 
     @Override
     public Word searchWord(String word) {
-        return getOne(new LambdaQueryWrapper<Word>().eq(Word::getWord, word));
+        Word result = getOne(new LambdaQueryWrapper<Word>().eq(Word::getWord, word.toLowerCase()));
+        if (result != null && result.getMeanings() != null
+                && (result.getMeanings().contains("unavailable") || result.getMeanings().contains("AI service"))) {
+            removeById(result.getId());
+            return null;
+        }
+        return result;
     }
 
     @Override
     public List<Word> fuzzySearch(String keyword, int limit) {
         return list(new LambdaQueryWrapper<Word>()
-                .like(Word::getWord, keyword)
+                .likeRight(Word::getWord, keyword)
                 .last("LIMIT " + limit));
     }
 }
